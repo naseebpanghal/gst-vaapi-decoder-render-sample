@@ -1,0 +1,14 @@
+CC=gcc
+DIR=dir
+OBJ_DIR=obj
+BIN_DIR=.
+BIN_NAME=gstvaapidecoder
+TARGET=$(BIN_DIR)/$(BIN_NAME)
+SRC=$(wildcard *.c)
+OBJ_FILES=$(SRC:%.c=$(OBJ_DIR)/%.o)
+
+
+CFLAGS=-g `pkg-config --cflags gstreamer-vaapi-1.0` `pkg-config --cflags gtk+-2.0` -I/usr/include/ffmpeg/
+
+LIBS= `pkg-config --libs gstreamer-vaapi-1.0` `pkg-config --libs gstreamer-vaapi-x11-1.0` `pkg-config --libs gtk+-2.0` -lavcodec -lavutil -lavformat
+LDFLAGS=
